@@ -122,20 +122,146 @@ body {
 }
 
 /* HERO */
+/* ---------------------------
+   HERO: centered + full-width gradient
+   Replace previous .hero / .hero-inner / .hero-left / .hero-right rules
+   --------------------------- */
+
 .hero {
-  margin: 8px 0 22px;
+  /* occupy full width and nearly full viewport height minus navbar */
+  width: 100%;
+  min-height: calc(100vh - 64px); /* 64px matches your navbar height */
+  display: flex;
+  align-items: center; /* vertical centering */
+  justify-content: center; /* horizontal centering */
+  padding: 36px 0;
+  box-sizing: border-box;
+
+  /* strong, complete gradient that covers the whole hero section */
+  background: linear-gradient(
+    180deg,
+    #0b2110 0%,
+    rgba(36, 51, 36, 0.95) 40%,
+    rgba(36, 51, 36, 0.85) 100%
+  );
+  /* optionally add subtle overlay for depth */
+  position: relative;
+  overflow: hidden;
 }
+
+/* inner container remains limited width but centers content */
 .hero-inner {
+  width: 100%;
+  max-width: 1100px; /* keeps layout aligned with page container */
+  margin: 0 auto;
   display: flex;
   gap: 28px;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center; /* center children horizontally */
   flex-wrap: wrap;
+  padding: 0 16px;
 }
+
+/* left column becomes centered text */
 .hero-left {
   flex: 1 1 520px;
-  max-width: 640px;
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* center content horizontally */
+  justify-content: center; /* center vertically inside its column */
+  text-align: center; /* center the text */
+  padding: 6px 8px;
 }
+
+/* keep small tag styling but align center */
+.mini-tag {
+  align-self: center;
+  margin-bottom: 8px;
+}
+
+/* big headline remains large but centered */
+.hero-title {
+  margin: 0;
+  line-height: 0.95;
+  font-weight: 900;
+  font-size: 56px;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.hero-title span {
+  display: block;
+}
+
+/* "AI" accent */
+.hero-ai {
+  color: var(--neon);
+  font-size: 56px;
+  margin-top: 6px;
+}
+
+/* sub text centered */
+.hero-sub {
+  margin-top: 14px;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 15px;
+  max-width: 720px;
+}
+
+/* call-to-action centered */
+.hero-cta {
+  margin-top: 18px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* right graphic: keep visible but don't push text off-center */
+.hero-right {
+  flex: 0 0 320px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 240px;
+}
+
+/* on very narrow screens stack vertically and keep everything centered */
+@media (max-width: 900px) {
+  .hero-inner {
+    gap: 16px;
+  }
+  .hero-left {
+    flex-basis: 100%;
+    max-width: 100%;
+    padding: 0 12px;
+  }
+  .hero-right {
+    flex-basis: 100%;
+    min-width: auto;
+    display: flex;
+    justify-content: center;
+    margin-top: 6px;
+  }
+  .hero-title {
+    font-size: 44px;
+  }
+  .hero-ai {
+    font-size: 44px;
+  }
+}
+
+@media (max-width: 620px) {
+  .hero-title {
+    font-size: 34px;
+  }
+  .hero-ai {
+    font-size: 34px;
+  }
+}
+
 .mini-tag {
   color: rgba(140, 255, 160, 0.9);
   font-weight: 700;
